@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Graph : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class Graph : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    Transform pointPrefab;
+
+    private void Awake()
     {
-        
+        for (int i = 0; i < 10; i++)
+        {
+            Transform point = Instantiate(pointPrefab);
+            point.localPosition = Vector3.right * ((i + 0.5f) /5f - 1f);
+            point.localScale = Vector3.one / 5f;
+
+
+        }
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////
+        //point.localPosition = Vector3.right;/
+        ///////////////////////////////////////
+        //point = Instantiate (pointPrefab);///
+        //point.localPosition=Vector3.right*2f;
+        ///////////////////////////////////////
     }
 }

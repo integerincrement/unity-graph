@@ -6,6 +6,7 @@ public class Graph : MonoBehaviour {
     [SerializeField]
     Transform pointPrefab;
 
+    //slider to determine how many cubes will be used
     [SerializeField, Range(10, 100)]
     int resolution = 10;
 
@@ -34,13 +35,6 @@ public class Graph : MonoBehaviour {
             point.SetParent(transform, false);
 
         }
-
-        ///////////////////////////////////////
-        //point.localPosition = Vector3.right;/
-        ///////////////////////////////////////
-        //point = Instantiate (pointPrefab);///
-        //point.localPosition=Vector3.right*2f;
-        ///////////////////////////////////////
     }
 
     void Update()   {
@@ -51,7 +45,9 @@ public class Graph : MonoBehaviour {
 
             Transform point = points[i];
             Vector3 position = point.localPosition;
-            position.y = Mathf.Sin(Mathf.PI * (position.x + time));
+            //position.y = Mathf.Sin(Mathf.PI * (position.x + time));
+            //added new functionality though FunctionLibrary class below
+            position.y = FunctionLibrary.MultiWave(position.x, time);
             point.localPosition = position;
 
         }

@@ -10,6 +10,9 @@ public class Graph : MonoBehaviour {
     [SerializeField, Range(10, 100)]
     int resolution = 10;
 
+    [SerializeField, Range(0, 1)]
+    int function;
+
     Transform[] points;
 
     private void Awake()
@@ -47,7 +50,12 @@ public class Graph : MonoBehaviour {
             Vector3 position = point.localPosition;
             //position.y = Mathf.Sin(Mathf.PI * (position.x + time));
             //added new functionality though FunctionLibrary class below
-            position.y = FunctionLibrary.MultiWave(position.x, time);
+            if (function == 0)
+            {
+                position.y = FunctionLibrary.Wave(position.x, time);
+            }else {
+                position.y = FunctionLibrary.MultiWave(position.x, time);
+            }
             point.localPosition = position;
 
         }
